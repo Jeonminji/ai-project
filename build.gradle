@@ -18,7 +18,28 @@ repositories {
 }
 
 dependencies {
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    implementation 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // swagger
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0'
+
+    // langchain
+    implementation 'dev.langchain4j:langchain4j-spring-boot-starter:0.32.0'
+    implementation 'dev.langchain4j:langchain4j-open-ai-spring-boot-starter:0.35.0'
+    implementation 'dev.langchain4j:langchain4j-experimental-sql:0.32.0'
+
+    implementation 'dev.langchain4j:langchain4j-ollama:0.32.0'
+    implementation 'dev.langchain4j:langchain4j-web-search-engine-tavily:0.33.0'
+    implementation 'dev.langchain4j:langchain4j-web-search-engine-google-custom:0.33.0'
+    implementation 'dev.langchain4j:langchain4j-core:0.36.2'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
