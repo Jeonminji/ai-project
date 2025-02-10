@@ -1,4 +1,4 @@
-##### 기본 설정
+######### 기본 설정 #########
 spring:
   application:
     name: ai-project
@@ -6,7 +6,7 @@ spring:
 server:
   port: 8090
 
-##### Swagger 설정 추가
+######### Swagger #########
 springdoc:
   swagger-ui:
     use-root-path: true
