@@ -1,0 +1,17 @@
+##### 기본 설정
+spring:
+  application:
+    name: ai-project
+
+server:
+  port: 8090
+
+##### Swagger 설정 추가
+springdoc:
+  swagger-ui:
+    use-root-path: true
+    path: /ai
+    tags-sorter: alpha
+    operations-sorter: alpha
+  cache:
+    disabled: true
