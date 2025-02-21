@@ -16,7 +16,7 @@ public class AiService {
     public String chat(String message) {
         ChatLanguageModel model = OpenAiChatModel.builder()
                 .apiKey("demo")
-                .modelName("gpt-3.5-turbo")
+                .modelName("gpt-4o-mini")
                 .build();
 
         Assistant assistant = AiServices.create(Assistant.class, model);
