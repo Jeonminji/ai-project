@@ -1,6 +1,8 @@
 package com.min.aiproject.service;
 
 import com.min.aiproject.chat.Assistant;
+import dev.langchain4j.memory.ChatMemory;
+import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatLanguageModel;
 import dev.langchain4j.model.openai.OpenAiChatModel;
 import dev.langchain4j.service.AiServices;
@@ -14,6 +16,9 @@ import org.springframework.stereotype.Service;
 public class AiService {
 
     public String chat(String message) {
+
+        ChatMemory chatMemory = MessageWindowChatMemory.withMaxMessages(3);
+
         ChatLanguageModel model = OpenAiChatModel.builder()
                 .apiKey("demo")
                 .modelName("gpt-4o-mini")
@@ -22,7 +27,10 @@ public class AiService {
                 .logResponses(true)
                 .build();
 
-        Assistant assistant = AiServices.create(Assistant.class, model);
+        Assistant assistant = AiServices.builder(Assistant.class)
+                .chatLanguageModel(model)
+                .chatMemory(chatMemory)
+                .build();
 
         return assistant.chat(message);
     }
