@@ -1,7 +1,9 @@
 package com.min.aiproject.service;
 
 import com.min.aiproject.chat.Assistant;
+import com.min.aiproject.chat.Memory;
 import dev.langchain4j.memory.ChatMemory;
+import dev.langchain4j.memory.chat.ChatMemoryProvider;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatLanguageModel;
 import dev.langchain4j.model.openai.OpenAiChatModel;
@@ -19,6 +21,8 @@ public class AiService {
 
         ChatMemory chatMemory = MessageWindowChatMemory.withMaxMessages(3);
 
+//        ChatMemoryProvider chatMemoryProvider =
+
         ChatLanguageModel model = OpenAiChatModel.builder()
                 .apiKey("demo")
                 .modelName("gpt-4o-mini")
@@ -32,6 +36,9 @@ public class AiService {
                 .chatMemory(chatMemory)
                 .build();
 
-        return assistant.chat(message);
+        return assistant.chat(Memory.builder()
+                    .messageSize(3)
+                    .build()
+                , message);
     }
 }
