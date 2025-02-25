@@ -17,6 +17,9 @@ public class AiService {
         ChatLanguageModel model = OpenAiChatModel.builder()
                 .apiKey("demo")
                 .modelName("gpt-4o-mini")
+                .temperature(0.5)   // 0 ~ 2 사이, 값 높을 수록 무작위 답변 생성
+                .logRequests(true)
+                .logResponses(true)
                 .build();
 
         Assistant assistant = AiServices.create(Assistant.class, model);
