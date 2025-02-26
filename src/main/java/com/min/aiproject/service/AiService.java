@@ -17,11 +17,12 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AiService {
 
+    private final ChatMemoryProviderService chatMemoryProviderService;
+    private final ChatMemory chatMemory = MessageWindowChatMemory.withMaxMessages(3);
+
     public String chat(String message) {
 
-        ChatMemory chatMemory = MessageWindowChatMemory.withMaxMessages(3);
-
-//        ChatMemoryProvider chatMemoryProvider =
+        ChatMemoryProvider chatMemoryProvider = chatMemoryProviderService.getChatMemoryProvider(3);
 
         ChatLanguageModel model = OpenAiChatModel.builder()
                 .apiKey("demo")
@@ -33,8 +34,11 @@ public class AiService {
 
         Assistant assistant = AiServices.builder(Assistant.class)
                 .chatLanguageModel(model)
-                .chatMemory(chatMemory)
+//                .chatMemory(chatMemory)
+                .chatMemoryProvider(chatMemoryProvider)
                 .build();
+
+        log.info("[AiService] getChatMemoryProvider : {}", chatMemoryProvider);
 
         return assistant.chat(Memory.builder()
                     .messageSize(3)
