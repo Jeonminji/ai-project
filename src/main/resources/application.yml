@@ -3,9 +3,9 @@ spring:
   application:
     name: ai-project
   datasource:
-        url: #[Database]://localhost:3306/[Database 스키마]#
-        username: #[DB 아이디]#
-        password: #[DB password]#
+        url: postgres://localhost:5432/aiproject
+        username: min
+        password: 1234
         driver-class-name: #[JDBC 드라이버]#
 
 server:
