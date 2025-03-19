@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @Slf4j
 @SpringBootApplication
-//@SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
 public class AiProjectApplication {
 
     public static void main(String[] args) {
