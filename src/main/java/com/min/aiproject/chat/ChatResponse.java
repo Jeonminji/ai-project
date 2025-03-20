@@ -1,4 +1,4 @@
-package com.min.aiproject.controller.ai;
+package com.min.aiproject.chat;
 
 import lombok.Builder;
 import lombok.Data;
