@@ -8,4 +8,7 @@ public interface Assistant {
 
     @SystemMessage("All questions will be answered in Korean.")
     String chat(@MemoryId Memory memory, @UserMessage  String userMessage);
+
+    @SystemMessage("All questions will be answered in Korean.")
+    String chat(@UserMessage  String userMessage);
 }
